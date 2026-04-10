@@ -80,42 +80,6 @@ Executive-grade dual dashboard on a 9,994-row, $2.3M retail dataset (2020–2023
 
 ---
 
-## SQL Competencies
-
-```sql
--- Cohort Retention Analysis (BigQuery, from Verve internship)
-WITH cohort_base AS (
-  SELECT
-    customer_id,
-    DATE_TRUNC(first_charge_date, MONTH) AS cohort_month,
-    DATE_TRUNC(charge_date, MONTH) AS activity_month
-  FROM gold.fact_subscriptions
-),
-cohort_size AS (
-  SELECT cohort_month, COUNT(DISTINCT customer_id) AS cohort_customers
-  FROM cohort_base
-  GROUP BY 1
-),
-retention AS (
-  SELECT
-    cohort_month,
-    activity_month,
-    DATE_DIFF(activity_month, cohort_month, MONTH) AS period_number,
-    COUNT(DISTINCT customer_id) AS retained_customers
-  FROM cohort_base
-  GROUP BY 1, 2, 3
-)
-SELECT
-  r.cohort_month,
-  r.period_number,
-  ROUND(r.retained_customers / cs.cohort_customers * 100, 2) AS retention_rate
-FROM retention r
-JOIN cohort_size cs USING (cohort_month)
-ORDER BY 1, 2;
-```
-
----
-
 ## Architecture I've Worked With
 
 ```
