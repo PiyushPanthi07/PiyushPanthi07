@@ -47,6 +47,7 @@ Production-grade fraud detection system replicating pipelines used at financial 
 
 **Scale:** 1M rows · 3-layer pipeline · 5 dashboards · 11 analytical views
 
+[![View Project](https://img.shields.io/badge/View_on_GitHub-181717?style=flat-square&logo=github)](https://github.com/PiyushPanthi07/banking-fraud-risk-analytics)
 ---
 
 ### 📊 Sales & Customer Analytics Dashboard
